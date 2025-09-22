@@ -24,28 +24,79 @@ sales_data = [
 
 def total_sales_by_product(data, product_key):
     """Calculates the total sales of a specific product in 30 days."""
-    pass
-
+    """Calcula las ventas totales de un producto específico en 30 días."""
+    total_produc_a = 0
+    for values in data:
+        if product_key in values:
+            total_produc_a += values[product_key]
+    return total_produc_a    
 
 def average_daily_sales(data, product_key):
     """Calculates the average daily sales of a specific product."""
-    pass
+    """Calcula las ventas diarias promedio de un producto específico."""
+    total_produc_b = total_sales_by_product(sales_data, "product_b")
+    promediob = 0
+    for values in data:
+        if product_key in values:
+            promediob = total_produc_b / values[product_key]
+    return promediob
 
 
 def best_selling_day(data):
     """Finds the day with the highest total sales."""
-    pass
+    """Encuentra el día con las mayores ventas totales."""
+    total_values = 0
+    for dato in data:
+        sumxday = 0
+        sumxday = sum(value for key, value in dato.items() if key != "day")
+        if sumxday > total_values:
+            total_values = sumxday
+
+
+    return total_values
+    #sum_total = sum(value for key, value in data[0].items() if key != "day")
+    #return sum_total
+       #total_venta = []
+        #sum_total = sum(value for key, value in data[values].items() if key != "day")
+        #total_venta.append(sum_total)
+        #return print(total_venta)
 
 
 def days_above_threshold(data, product_key, threshold):
     """Counts how many days the sales of a product exceeded a given threshold."""
-    pass
+    """Cuenta cuántos días las ventas de un producto superaron un umbral determinado. """
+    day_product_exceeded = []
+    for n in data:
+        if product_key in n and n[product_key] > threshold:
+            day_product_exceeded.append(n["day"])
+    
+    return day_product_exceeded
+    #for values in data[]:
+    #return day_product_exceeded
+
 
 
 def top_product(data):
     """Determines which product had the highest total sales in 30 days."""
-    pass
-
+    """Determina qué producto tuvo las mayores ventas totales en 30 días."""
+    total_a = 0
+    total_b = 0
+    total_c = 0
+    for n in data:
+        total_a += n["product_a"]
+        total_b += n["product_b"]
+        total_c += n["product_c"]
+    
+    max_sales = ""
+    if total_a >= total_b and total_a >= total_c:
+        max_sales = "a"
+        return 
+    elif total_a >= total_b and total_a >= total_c:
+        max_sales = "b"
+        return 
+    else:
+        max_sales = "c"
+        return max_sales
 
 
 # Function tests
